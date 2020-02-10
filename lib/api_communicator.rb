@@ -23,8 +23,8 @@ def get_character_movies_from_api(character)
 
   response_hash['results'].each do |attributes|
     if attributes['name'].downcase == character.downcase
-      attributes['films'].each do |title_url|
-        films_string = RestClient.get(title_url)
+      attributes['films'].each do |url|
+        films_string = RestClient.get(url)
         films_json = JSON.parse(films_string)
         film_arr << films_json
       end
